@@ -5,7 +5,7 @@ import Logo from '@/assets/images/Logo.png';
 const Header = () => {
   return (
     <Wrapper>
-      <img src={Logo} />
+      <img src={Logo} alt="engAll 로고" />
     </Wrapper>
   );
 };
