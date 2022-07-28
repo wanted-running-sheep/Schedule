@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import Logo from '@/assets/images/Logo.png';
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
-      <img src={Logo} alt="engAll 로고" />
+      <img src={Logo} alt="engAll 로고" onClick={() => navigate('/')} />
     </Wrapper>
   );
 };

@@ -12,10 +12,12 @@ const color = {
   },
   font: {
     white: '#FFFFFF',
+    lightgray: '#cccccc',
     gray: '#747474',
     black: '#000000',
   },
   border: {
+    lightgray: '#F0F0F0',
     gray: '#B4B4B4',
     black: '#000000',
   },

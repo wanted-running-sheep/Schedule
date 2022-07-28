@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from '@/components/Button';
-import Title from '@/components/Title';
-import Radio from '@/components/Radio';
+import Button from '@/components/@shared/Button';
+import Title from '@/components/@shared/Title';
+import Radio from '@/components/@shared/Radio';
+import WeeklyButtonList from '@/components/AddSchedule/WeeklyButtonList';
 import useFormatTime from '@/hooks/useFormatTime';
-import { hours, minutes, Days } from '@/types/common';
+import { hours, minutes } from '@/types/common';
 
 const AddSchedulePage = () => {
   const { padTime } = useFormatTime();
@@ -38,9 +39,7 @@ const AddSchedulePage = () => {
         </Content>
         <Content>
           <p>Repeat on</p>
-          {Days.map((day, index) => (
-            <DayButton key={index}>{day}</DayButton>
-          ))}
+          <WeeklyButtonList />
         </Content>
       </Article>
       <ButtonWrapper>
@@ -76,7 +75,7 @@ const Content = styled.div`
     ${({ theme }) => theme.mixins.lightBoxShadow()};
     border: 1px solid ${({ theme }) => theme.color.border.gray};
     height: 45px;
-    width: 55px;
+    width: 60px;
     text-align: center;
   }
 `;
@@ -87,11 +86,4 @@ const RadioWrapper = styled.div`
 const ButtonWrapper = styled.div`
   text-align: right;
   margin-top: 20px;
-`;
-const DayButton = styled.button`
-  background: ${({ theme }) => theme.color.background.white};
-  border: 1px solid ${({ theme }) => theme.color.border.gray};
-  height: 45px;
-  width: 110px;
-  margin-right: 10px;
 `;

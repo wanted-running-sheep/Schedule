@@ -19,6 +19,11 @@ export const hours = [
 export const minutes = [
   0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60,
 ] as const;
+export const ButtonTypeEnum = {
+  MULTIPLE: 'multiple',
+  SINGLE: 'single',
+} as const;
 
 export type APIUrlType = typeof APIUrl[keyof typeof APIUrl];
 export type DaysType = typeof Days[number];
+export type ButtonType = typeof ButtonTypeEnum[keyof typeof ButtonTypeEnum];

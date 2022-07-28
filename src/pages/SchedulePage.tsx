@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
 import Cancel from '@/assets/images/Cancel.png';
-import Title from '@/components/Title';
-import Button from '@/components/Button';
+import Title from '@/components/@shared/Title';
+import Button from '@/components/@shared/Button';
 
 import { Days } from '@/types/common';
 import useScheduleModel from '@/api/models/useScheduleModel';

@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
  #root, html, body {
    height: 100%;
  }
- button, svg, input, select, label, li {
+ img, button, svg, input, select, label, li {
   cursor: pointer;
  }
 `;

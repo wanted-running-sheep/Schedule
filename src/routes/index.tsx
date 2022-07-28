@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Layout from '@/components/Layout';
+import Layout from '@/components/@shared/Layout';
 import SchedulePage from '@/pages/SchedulePage';
 import AddSchedulePage from '@/pages/AddSchedulePage';
 

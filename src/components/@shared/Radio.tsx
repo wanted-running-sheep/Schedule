@@ -20,9 +20,9 @@ const Wrapper = styled.div`
   label {
     display: inline-block;
     height: 45px;
-    width: 55px;
+    width: 60px;
     text-align: center;
-    line-height: 45px;
+    line-height: 40px;
     background-color: transparent;
     border: 1px solid ${({ theme }) => theme.color.border.gray};
   }
