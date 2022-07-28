@@ -7,31 +7,17 @@ import Title from '@/components/Title';
 import Button from '@/components/Button';
 
 import { Days } from '@/types/common';
-import { MAX_HOURS } from '@/api/constants';
 import useScheduleModel from '@/api/models/useScheduleModel';
+import useFormatTime from '@/hooks/useFormatTime';
 
 const SchedulePage = () => {
   const navigate = useNavigate();
   const { schedule, getScheduleData } = useScheduleModel();
+  const { calculateMeridiem, formatHours, formatMinutes } = useFormatTime();
+
   useEffect(() => {
     getScheduleData();
   }, []);
-
-  const calculateMeridiem = (hours: number) => {
-    return hours < MAX_HOURS ? 'AM' : 'PM';
-  };
-  const formatHours = (hours: number) => {
-    let generalTime = hours % MAX_HOURS;
-    generalTime = generalTime ? generalTime : MAX_HOURS;
-    return generalTime;
-  };
-  // padStart
-  const formatMinutes = (minutes: string) => {
-    const MAX_MINUTES_LENGTH = 2;
-    const minutesLength = minutes.length;
-    if (minutesLength >= MAX_MINUTES_LENGTH) return minutes;
-    return 0 + minutes;
-  };
 
   const formatTimeStamp = (inputedTime: EpochTimeStamp) => {
     const CLASS_HOURS = 40;
