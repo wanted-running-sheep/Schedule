@@ -1,13 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+import Layout from '@/components/Layout';
 import SchedulePage from '@/pages/SchedulePage';
-import Layout from '@/pages/Layout';
+import AddSchedulePage from '@/pages/AddSchedulePage';
 
 const Router = () => {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<SchedulePage />}></Route>
+        <Route path="/add" element={<AddSchedulePage />}></Route>
       </Route>
     </Routes>
   );

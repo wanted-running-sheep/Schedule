@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 interface ButtonProps {
   name: string;
+  onClick: () => void;
 }
-const Button = ({ name }: ButtonProps) => {
-  return <DefaultButton>{name}</DefaultButton>;
+const Button = ({ name, onClick }: ButtonProps) => {
+  return <DefaultButton onClick={onClick}>{name}</DefaultButton>;
 };
 
 export default Button;
