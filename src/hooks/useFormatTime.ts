@@ -1,7 +1,7 @@
 import React from 'react';
-import { MAX_HOURS } from '@/api/constants';
 
 const useFormatTime = () => {
+  const MAX_HOURS = 12;
   const calculateMeridiem = (hours: number) => {
     return hours < MAX_HOURS ? 'AM' : 'PM';
   };

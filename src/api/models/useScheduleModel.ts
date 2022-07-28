@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { AxiosResponse } from 'axios';
 
 import { ScheduleInterface } from 'request';
@@ -8,7 +8,7 @@ import { APIUrl } from '@/types/common';
 const useScheduleModel = () => {
   const [schedule, setSchedule] = useState<ScheduleInterface[]>([]);
 
-  const getScheduleData = async () => {
+  const getSchedule = async () => {
     try {
       const scheduleResponse: AxiosResponse<ScheduleInterface[]> =
         await apiRequest.get<ScheduleInterface[]>(APIUrl.SCHEDULE);
@@ -34,11 +34,16 @@ const useScheduleModel = () => {
     }
   };
 
+  const deleteSchedule = async (id: number) => {
+    return await apiRequest.delete(APIUrl.SCHEDULE, id);
+  };
+
   return {
     schedule,
-    getScheduleData,
+    getSchedule,
     patchSchedule,
     postSchedule,
+    deleteSchedule,
   };
 };
 

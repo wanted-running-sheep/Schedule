@@ -12,11 +12,11 @@ import useFormatTime from '@/hooks/useFormatTime';
 
 const SchedulePage = () => {
   const navigate = useNavigate();
-  const { schedule, getScheduleData } = useScheduleModel();
+  const { schedule, getSchedule, deleteSchedule } = useScheduleModel();
   const { calculateMeridiem, formatHours, padTime } = useFormatTime();
 
   useEffect(() => {
-    getScheduleData();
+    getSchedule();
   }, []);
 
   const formatTimeStamp = (inputedTime: EpochTimeStamp) => {
@@ -41,6 +41,11 @@ const SchedulePage = () => {
     )} ${endMeridiem}`;
   };
 
+  const deleteSelectSchedule = (id: number) => {
+    deleteSchedule(id);
+    getSchedule();
+  };
+
   return (
     <>
       <Header>
@@ -53,11 +58,15 @@ const SchedulePage = () => {
             <DayHeader>{day}</DayHeader>
             <DayWrapper>
               {schedule.map(
-                ({ workDays, startTime }, index) =>
+                ({ id, workDays, startTime }, index) =>
                   JSON.stringify(workDays).includes(day) && (
                     <DayContent key={index}>
                       <span>{formatTimeStamp(startTime)}</span>
-                      <img src={Cancel} alt="Cancel" />
+                      <img
+                        src={Cancel}
+                        alt="Cancel"
+                        onClick={() => deleteSelectSchedule(id)}
+                      />
                     </DayContent>
                   )
               )}

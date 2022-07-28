@@ -19,4 +19,8 @@ export class HttpRequest {
   patch<T>(url: APIUrlType, id: number, data: T) {
     return this.service.patch(`${url}/${id}`, data);
   }
+
+  delete(url: APIUrlType, id: number) {
+    return this.service.delete(`${url}/${id}`);
+  }
 }
