@@ -13,7 +13,7 @@ import useFormatTime from '@/hooks/useFormatTime';
 const SchedulePage = () => {
   const navigate = useNavigate();
   const { schedule, getScheduleData } = useScheduleModel();
-  const { calculateMeridiem, formatHours, formatMinutes } = useFormatTime();
+  const { calculateMeridiem, formatHours, padTime } = useFormatTime();
 
   useEffect(() => {
     getScheduleData();
@@ -34,9 +34,9 @@ const SchedulePage = () => {
     const startMeridiem = calculateMeridiem(startTime.getHours());
     const endMeridiem = calculateMeridiem(endTime.getHours());
 
-    return `${startHours}:${formatMinutes(
+    return `${startHours}:${padTime(
       startMinutes + ''
-    )} ${startMeridiem} - ${endHours}:${formatMinutes(
+    )} ${startMeridiem} - ${endHours}:${padTime(
       endMinutes + ''
     )} ${endMeridiem}`;
   };

@@ -3,9 +3,12 @@ import styled from 'styled-components';
 
 import Button from '@/components/Button';
 import Title from '@/components/Title';
-import { hours, minutes } from '@/types/common';
+import Radio from '@/components/Radio';
+import useFormatTime from '@/hooks/useFormatTime';
+import { hours, minutes, Days } from '@/types/common';
 
 const AddSchedulePage = () => {
+  const { padTime } = useFormatTime();
   return (
     <>
       <Title name="Add Class Schedule" />
@@ -15,7 +18,7 @@ const AddSchedulePage = () => {
           <select name="hours">
             {hours.map((hour, index) => (
               <option key={index} value={hour}>
-                {hour}
+                {padTime(hour + '')}
               </option>
             ))}
           </select>
@@ -23,17 +26,25 @@ const AddSchedulePage = () => {
           <select name="minutes">
             {minutes.map((minute, index) => (
               <option key={index} value={minute}>
-                {minute}
+                {padTime(minute + '')}
               </option>
             ))}
           </select>
+
+          <RadioWrapper>
+            <Radio name="meridiem" type="AM" />
+            <Radio name="meridiem" type="PM" />
+          </RadioWrapper>
         </Content>
         <Content>
           <p>Repeat on</p>
+          {Days.map((day, index) => (
+            <DayButton key={index}>{day}</DayButton>
+          ))}
         </Content>
       </Article>
       <ButtonWrapper>
-        <Button name="Save" width="100px" />
+        <Button name="Save" width="150px" />
       </ButtonWrapper>
     </>
   );
@@ -46,8 +57,8 @@ const Article = styled.article`
   background: ${({ theme }) => theme.color.background.white};
   width: 100%;
   height: 400px;
-  padding: 50px 15px;
-  margin-top: 40px;가
+  padding: 20px 30px;
+  margin-top: 40px;
 `;
 const Content = styled.div`
   display: flex;
@@ -55,7 +66,6 @@ const Content = styled.div`
   height: 100px;
   p {
     font-size: 1.2rem;
-    font-weight: 700;
     width: 120px;
   }
   span {
@@ -70,7 +80,18 @@ const Content = styled.div`
     text-align: center;
   }
 `;
+const RadioWrapper = styled.div`
+  ${({ theme }) => theme.mixins.flexBox()};
+  margin-left: 20px;
+`;
 const ButtonWrapper = styled.div`
   text-align: right;
   margin-top: 20px;
+`;
+const DayButton = styled.button`
+  background: ${({ theme }) => theme.color.background.white};
+  border: 1px solid ${({ theme }) => theme.color.border.gray};
+  height: 45px;
+  width: 110px;
+  margin-right: 10px;
 `;

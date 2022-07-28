@@ -1,3 +1,5 @@
+import { theme } from '@/styles/theme';
+
 export const APIUrl = {
   SCHEDULE: '/schedule',
 } as const;
