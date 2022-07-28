@@ -5,8 +5,8 @@ const color = {
   background: {
     white: '#FFFFFF',
     lightgray: '#F4F4F4',
-    lightblue: '#5FA5C4',
     gray: '#EFEFEF',
+    lightblue: '#5FA5C4',
   },
 
   font: {
@@ -15,14 +15,16 @@ const color = {
     black: '#000000',
   },
   border: {
+    white: '#FFFFFF',
     lightgray: '#EAEAEA',
     darkgray: '#C2C2C2',
     darkblue: '#4B617A',
     black: '#000000',
   },
   button: {
-    darkgray: '#959595',
+    white: '#FFFFFF',
     gray: '#B4B4B4',
+    darkgray: '#959595',
     blue: '#4375D1',
   },
 };
