@@ -35,9 +35,9 @@ const Wrapper = styled.article`
 const ContetBox = styled.div`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.color.background.content};
+  background-color: ${({ theme }) => theme.color.white};
   ${({ theme }) => theme.mixins.boxShadow()}
-  padding: 10px;
+  padding: 20px 40px;
 `;
 
 const ButtonWrapper = styled.div`

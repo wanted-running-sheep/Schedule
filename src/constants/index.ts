@@ -4,3 +4,13 @@ export const LOGO_URL =
 export const SCHEDULE_TITLE = 'Class schedule';
 
 export const ADD_SCHEDULE_TITLE = 'Add class schedule';
+
+export const WEEK_LIST = [
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+  'Sunday',
+];
