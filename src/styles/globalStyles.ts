@@ -4,21 +4,16 @@ import '@/assets/css/font.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
-  html{
-    font-family: 'GothicA1-Light', sans-serif;
-  }
   * {
     box-sizing:border-box;
     outline:none;
     border:none;
-    font-family: 'GothicA1-Light', sans-serif;
-    letter-spacing: 1px;
+    font-family: Pretendard, -apple-system, sans-serif;
+    font-weight: 400;
   }
   h1{
-    font-family: 'GothicA1-Black', sans-serif;
-  }
-  button {
-    font-family: 'GothicA1-Medium', sans-serif;
+    font-family: Pretendard, -apple-system, sans-serif;
+    font-weight: 700;
   }
   #root, html, body {
     height: 100%;
