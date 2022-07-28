@@ -2,15 +2,11 @@ import mixins from './mixins';
 import media from './media';
 
 const color = {
+  white: '#ffffff',
   background: {
-    white: '#FFFFFF',
-    lightwhite: '#FAFAFA',
-    lightgray: '#F7F7F7',
-    lightyellow: '#f8f3e7',
-    blue: '#4458FF',
-    gray: '#E5E5E5',
-    darkgray: '#606376A6',
-    black: '#000000',
+    turquoise: '#44a7cb',
+    lightgray: '#f4f4f4',
+    blue: '#3175D8',
   },
 
   font: {
