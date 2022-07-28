@@ -1,5 +1,6 @@
 import mixins from './mixins';
 import media from './media';
+import animation from './animation';
 
 const color = {
   background: {
@@ -33,5 +34,6 @@ export const theme = {
   color,
   media,
   mixins,
+  animation,
 };
 export type Theme = typeof theme;

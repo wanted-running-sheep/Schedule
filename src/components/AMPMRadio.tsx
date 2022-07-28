@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 
+import { INITIAL_INDEX } from '@/constants';
+
 import styled from 'styled-components';
 
 type PeriodsType = 'AM' | 'PM';
 
 const periods: PeriodsType[] = ['AM', 'PM'];
-const INITIAL_INDEX = 0;
 
 interface AMPMRadioProps {
   getChecked?: (value: string) => void;
