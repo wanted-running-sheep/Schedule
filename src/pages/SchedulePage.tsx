@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import Cancel from '@/assets/images/Cancel.png';
 import Title from '@/components/Title';
 import Button from '@/components/Button';
-import Article from '@/components/Article';
 
 import { Days } from '@/types/common';
 import { MAX_HOURS } from '@/api/constants';
@@ -30,7 +29,6 @@ const SchedulePage = () => {
   const formatMinutes = (minutes: string) => {
     const MAX_MINUTES_LENGTH = 2;
     const minutesLength = minutes.length;
-    console.log(minutesLength);
     if (minutesLength >= MAX_MINUTES_LENGTH) return minutes;
     return 0 + minutes;
   };
@@ -89,6 +87,15 @@ export default SchedulePage;
 
 const Header = styled.header`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
+`;
+const Article = styled.article`
+  ${({ theme }) => theme.mixins.boxShadow()};
+  ${({ theme }) => theme.mixins.flexBox('center', 'space-between')};
+  background: ${({ theme }) => theme.color.background.white};
+  width: 100%;
+  height: 400px;
+  padding: 10px 15px;
+  margin-top: 40px;
 `;
 const Day = styled.div`
   width: calc(100% / 7);
