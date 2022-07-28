@@ -22,15 +22,6 @@ const mixins = {
       display: none; /* Chrome, Safari, Opera*/
     }
   `,
-  scrollSnap: {
-    parent: () => `
-      overflow: auto;
-      scroll-snap-type: y mandatory;
-    `,
-    child: () => `
-      scroll-snap-align: start;
-    `,
-  },
 };
 
 export default mixins;
