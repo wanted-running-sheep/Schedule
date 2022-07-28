@@ -7,9 +7,6 @@ const mixins = {
   boxShadow: () => `
     box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 4px;
   `,
-  lightBoxShadow: () => `
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
-  `,
   transformCenter: () => `
     top: 50%;
     left: 50%;
