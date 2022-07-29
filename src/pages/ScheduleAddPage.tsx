@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import TimePicker from '@/components/TimePicker/TimePicker';
 import AMPMRadio from '@/components/AMPMRadio';
 import Button from '@/components/Button';
@@ -26,6 +27,7 @@ const ScheduleAddPage = () => {
   const [period, setPeriod] = useState<string>('AM');
   const [time, setTime] = useState<number>(100);
   const { createtSchedule } = useScheduleModel();
+  const navigate = useNavigate();
 
   const handleClickedDaysButton = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -62,6 +64,7 @@ const ScheduleAddPage = () => {
       if (!response.result) break;
     }
     response && alert(response.msg);
+    navigate('/schedule');
   };
 
   return (
