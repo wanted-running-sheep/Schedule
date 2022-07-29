@@ -3,8 +3,9 @@ import { periods } from './periods';
 
 export const getPrettyTime = (time: number) => {
   if (time % 100 >= 60) time += 40;
-  const isNight = time >= 1200 ? true : false;
+  const isNight = time >= 1200 && time < 2400 ? true : false;
   if (time >= 1300) time -= 12 * 100;
+  if (!isNight && (time - (time % 100)) / 100 === 12) time -= 12 * 100;
 
   let formatStartTime = pad2Digit(time, 4);
   formatStartTime =

@@ -39,18 +39,8 @@ const ScheduleAddPage = () => {
     setTime(Number(value));
   };
 
-  const get24HourFormat = (time: number, period: string) => {
-    const helpNumber = 12 * 100;
-    const hour = Math.floor(time / 100);
-
-    if (period === 'PM' && hour === 12) return time;
-    if (period === 'PM') return time + helpNumber;
-    if (hour === 12) return time - helpNumber;
-    return time;
-  };
-
   const handleClickedSaveButton = async () => {
-    const selectedTime = get24HourFormat(time, period);
+    const selectedTime = time;
     const selectedDays = isButtonsClicked
       .map((isSelected, index) => isSelected && days[index])
       .filter((day) => day);
@@ -85,7 +75,7 @@ const ScheduleAddPage = () => {
         <TimeSection>
           <h3>Start time</h3>
           <TimePicker getTime={getTime} />
-          <AMPMRadio getChecked={getPeriodChecked} />
+          <AMPMRadio getChecked={getPeriodChecked} selectedTime={time} />
         </TimeSection>
         <DaySection>
           <h3>Repeat on</h3>

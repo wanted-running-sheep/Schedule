@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { INITIAL_INDEX } from '@/constants';
 import { PeriodsType, periods } from '@/utils/periods';
@@ -7,12 +7,21 @@ import styled from 'styled-components';
 
 interface AMPMRadioProps {
   getChecked?: (value: string) => void;
+  selectedTime: number;
 }
 
-const AMPMRadio = ({ getChecked = (value: string) => {} }: AMPMRadioProps) => {
+const AMPMRadio = ({
+  getChecked = (value: string) => {},
+  selectedTime,
+}: AMPMRadioProps) => {
   const [selectedPeriod, setSelectedPeriod] = useState<PeriodsType>(
     periods[INITIAL_INDEX]
   );
+
+  useEffect(() => {
+    const periodIndex = selectedTime >= 1200 ? 1 : 0;
+    setSelectedPeriod(periods[periodIndex]);
+  }, [selectedTime]);
 
   const handleChangedRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -30,6 +39,7 @@ const AMPMRadio = ({ getChecked = (value: string) => {} }: AMPMRadioProps) => {
             value={period}
             checked={period === selectedPeriod}
             onChange={handleChangedRadio}
+            disabled
           />
           <Label htmlFor={period}>{period}</Label>
         </div>
@@ -52,6 +62,7 @@ const Label = styled.label`
   background-color: ${({ theme }) => theme.color.button.white};
   border: 1px solid ${({ theme }) => theme.color.border.darkgray};
   padding: 8px 12px;
+  cursor: default;
 `;
 
 const RadioButton = styled.input`
