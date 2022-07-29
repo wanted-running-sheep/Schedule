@@ -4,11 +4,19 @@ import styled from 'styled-components';
 interface RadioProps {
   name: string;
   type: string;
+  checked: boolean;
 }
-const Radio = ({ name, type }: RadioProps) => {
+const Radio = ({ name, type, checked }: RadioProps) => {
   return (
     <Wrapper>
-      <input type="radio" name={name} id={type} value={type} />
+      <input
+        type="radio"
+        name={name}
+        id={type}
+        value={type}
+        checked={checked}
+        disabled
+      />
       <label htmlFor={type}>{type}</label>
     </Wrapper>
   );

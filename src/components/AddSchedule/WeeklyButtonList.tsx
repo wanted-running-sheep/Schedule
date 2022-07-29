@@ -2,18 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { Days, DaysType, ButtonTypeEnum } from '@/types/common';
 import useToggleButton from '@/hooks/useToggleButton';
-
-const WeeklyButtonList = () => {
+import { SetStateType } from '@/types/react';
+interface WeeklyButtonListProps {
+  setSelectedDays: SetStateType<DaysType[]>;
+}
+const WeeklyButtonList = ({ setSelectedDays }: WeeklyButtonListProps) => {
   const { selectedList, onToggleButton } = useToggleButton<DaysType>(
     ButtonTypeEnum.MULTIPLE
   );
+  const toggleClickButton = (day: DaysType) => {
+    onToggleButton(day);
+    if (selectedList) setSelectedDays([...selectedList, day]);
+  };
+
   return (
     <>
       {Days.map((day, index) => (
         <DayButton
           key={index}
           isClicked={selectedList.includes(day)}
-          onClick={() => onToggleButton(day)}
+          onClick={() => toggleClickButton(day)}
         >
           {day}
         </DayButton>

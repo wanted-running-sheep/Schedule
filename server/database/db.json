@@ -3,22 +3,58 @@
     {
       "id": 1,
       "startTime": 1658983915784,
-      "workDays": ["Monday", "Tuesday"]
+      "workDays": [
+        "Monday",
+        "Tuesday"
+      ]
     },
     {
       "id": 2,
       "startTime": 1658982655784,
-      "workDays": ["Wednesday", "Thursday"]
+      "workDays": [
+        "Wednesday",
+        "Thursday"
+      ]
     },
     {
       "id": 3,
       "startTime": 1658995244929,
-      "workDays": ["Friday"]
+      "workDays": [
+        "Friday"
+      ]
     },
     {
       "id": 4,
       "startTime": 1658995244929,
-      "workDays": ["Monday", "Sunday"]
+      "workDays": [
+        "Monday",
+        "Sunday"
+      ]
+    },
+    {
+      "id": 5,
+      "startTime": 1659102918486,
+      "workDays": [
+        "Tuesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    {
+      "id": 6,
+      "startTime": 1659038434104,
+      "workDays": [
+        "Tuesday",
+        "Wednesday"
+      ]
+    },
+    {
+      "id": 7,
+      "startTime": 1659047741222,
+      "workDays": [
+        "Wednesday",
+        "Thursday"
+      ]
     }
   ]
 }
