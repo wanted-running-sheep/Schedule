@@ -1,3 +1,11 @@
 {
-  "schedule": []
+  "schedule": {
+    "Monday": [],
+    "Tuesday": [],
+    "Wednesday": [],
+    "Thursday": [],
+    "Friday": [],
+    "Saturday": [],
+    "Sunday": []
+  }
 }

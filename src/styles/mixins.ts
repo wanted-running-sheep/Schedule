@@ -5,10 +5,7 @@ const mixins = {
     justify-content: ${justify};
   `,
   boxShadow: () => `
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  `,
-  lightBoxShadow: () => `
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   `,
   transformCenter: () => `
     top: 50%;
