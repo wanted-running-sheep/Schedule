@@ -6,9 +6,10 @@ export const adjustHourByMinute = (time: number) => {
 };
 
 export const getPrettyTime = (time: number) => {
-  time = adjustHourByMinute(time);
-  const isNight = time >= 1200 ? true : false;
+  if (time % 100 >= 60) time += 40;
+  const isNight = time >= 1200 && time < 2400 ? true : false;
   if (time >= 1300) time -= 12 * 100;
+  if (!isNight && (time - (time % 100)) / 100 === 12) time -= 12 * 100;
 
   let formatStartTime = pad2Digit(time, 4);
   formatStartTime =

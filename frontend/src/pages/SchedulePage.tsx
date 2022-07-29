@@ -107,7 +107,7 @@ const Article = styled.article`
   ${({ theme }) => theme.mixins.flexBox('flex-start', 'space-between')}
   background-color: ${({ theme }) => theme.color.background.white};
   padding: 40px 32px;
-  min-height: 50%;
+  min-height: 600px;
   ${({ theme }) => theme.mixins.boxShadow};
 `;
 const DayTable = styled.div`

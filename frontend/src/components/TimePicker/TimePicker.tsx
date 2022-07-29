@@ -6,7 +6,7 @@ import { INITIAL_INDEX } from '@/constants';
 
 import styled from 'styled-components';
 
-const hours = new Array(12).fill(0).map((_, index) => index + 1);
+const hours = new Array(24).fill(0).map((_, index) => index);
 const minutes = new Array(12).fill(0).map((_, index) => index * 5);
 
 interface TimePickerProps {

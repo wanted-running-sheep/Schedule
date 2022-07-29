@@ -21,7 +21,6 @@ const ScheduleAddPage = () => {
   const [isButtonsClicked, setIsButtonClicked] = useState<boolean[]>(
     new Array(7).fill(false)
   );
-  const [period, setPeriod] = useState<string>(Periods[INITIAL_INDEX]);
   const [time, setTime] = useState<number>(100);
   const { createSchedule, getScheduleData, schedules } = useScheduleModel();
 
@@ -39,22 +38,8 @@ const ScheduleAddPage = () => {
     setIsButtonClicked([...newClickedState]);
   };
 
-  const getPeriodChecked = (value: string) => {
-    setPeriod(value);
-  };
-
   const getTime = (value: string) => {
     setTime(Number(value));
-  };
-
-  const get24HourFormat = (time: number, period: string) => {
-    const helpNumber = 12 * 100;
-    const hour = Math.floor(time / 100);
-
-    if (period === 'PM' && hour === 12) return time;
-    if (period === 'PM') return time + helpNumber;
-    if (hour === 12) return time - helpNumber;
-    return time;
   };
 
   const findSameDayAndTime = (day: string, selectedTime: number) => {
@@ -79,7 +64,7 @@ const ScheduleAddPage = () => {
   };
 
   const handleClickedSaveButton = async () => {
-    const selectedTime = get24HourFormat(time, period);
+    const selectedTime = time;
     const selectedDays = isButtonsClicked
       .map((isSelected, index) => isSelected && Days[index])
       .filter((day) => day);
@@ -115,7 +100,7 @@ const ScheduleAddPage = () => {
           <h3>Start time</h3>
           <TimePicker getTime={getTime} />
           <RadioWrapper>
-            <AMPMRadio getChecked={getPeriodChecked} />
+            <AMPMRadio selectedTime={time} />
           </RadioWrapper>
         </Content>
         <Content>
@@ -157,8 +142,11 @@ const Header = styled.header`
 `;
 const Article = styled.article`
   background-color: ${({ theme }) => theme.color.background.white};
+  ${({ theme }) => theme.mixins.flexBox('start', 'center')};
+  flex-direction: column;
   padding: 30px 20px;
   margin-bottom: 20px;
+  min-height: 330px;
 `;
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexBox('center', 'flex-start')};
