@@ -33,6 +33,9 @@ export const theme = {
   button,
   input,
   label,
+<<<<<<< HEAD
   select,
+=======
+>>>>>>> 147fcc0ed675b46f1da17e01aa46ee98996d0e90
 };
 export type Theme = typeof theme;

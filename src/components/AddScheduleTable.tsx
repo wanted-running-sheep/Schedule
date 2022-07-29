@@ -77,6 +77,7 @@ const Row = styled.div`
 
 const TimePicker = styled.div`
   select {
+<<<<<<< HEAD
     ${({ theme }) => theme.select.time};
 
     &:active {
@@ -86,6 +87,9 @@ const TimePicker = styled.div`
     option {
       background-color: ${({ theme }) => theme.color.background.white};
     }
+=======
+    ${({ theme }) => theme.input.text.time};
+>>>>>>> 147fcc0ed675b46f1da17e01aa46ee98996d0e90
   }
 `;
 
