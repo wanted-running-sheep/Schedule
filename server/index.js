@@ -1,18 +1,20 @@
-const jsonServer = require('json-server');
+import express from 'express';
+import cors from 'cors';
+import scheduleRoute from './routes/schedule.js';
 
-const server = jsonServer.create();
-const router = jsonServer.router('./server/database/db.json');
-const middlewares = jsonServer.defaults({
-  static: './build',
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+    credentials: true,
+  })
+);
+
+scheduleRoute.forEach(({ method, route, handler }) => {
+  app[method](route, handler);
 });
 
-const port = process.env.PORT || 8000;
-
-server.use(middlewares);
-
-server.use(jsonServer.bodyParser);
-
-server.use(router);
-server.listen(port, () => {
-  console.log('JSON Server is running');
-});
+app.listen({ port: 8000 });
+console.log('server listening on 8000');

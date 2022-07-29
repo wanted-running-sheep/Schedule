@@ -56,22 +56,16 @@ const ScheduleAddPage = () => {
       .filter((day) => day);
 
     let response = null;
+    const schedules = [];
+
     for (let day of selectedDays) {
       const schedule = {
         day: day,
         startTime: selectedTime,
       };
-
-      response = await checkSavedScheduleData(
-        day as string,
-        selectedTime as number
-      );
-      if (!response.result) break;
-      if (response.data && response.data.length > 0) break;
-
-      response = await createtSchedule(schedule);
-      if (!response.result) break;
+      schedules.push(schedule);
     }
+    response = await createtSchedule(schedules);
     response && alert(response.msg);
     response && response.result && navigate('/schedule');
   };
