@@ -18,7 +18,7 @@ const ScheduleAddPage = () => {
   );
   const [period, setPeriod] = useState<string>('AM');
   const [time, setTime] = useState<number>(100);
-  const { createtSchedule } = useScheduleModel();
+  const { createtSchedule, checkSavedScheduleData } = useScheduleModel();
   const navigate = useNavigate();
 
   const handleClickedDaysButton = (
@@ -46,6 +46,7 @@ const ScheduleAddPage = () => {
     if (period === 'PM' && hour === 12) return time;
     if (period === 'PM') return time + helpNumber;
     if (hour === 12) return time - helpNumber;
+    return time;
   };
 
   const handleClickedSaveButton = async () => {
@@ -60,11 +61,19 @@ const ScheduleAddPage = () => {
         day: day,
         startTime: selectedTime,
       };
+
+      response = await checkSavedScheduleData(
+        day as string,
+        selectedTime as number
+      );
+      if (!response.result) break;
+      if (response.data && response.data.length > 0) break;
+
       response = await createtSchedule(schedule);
       if (!response.result) break;
     }
     response && alert(response.msg);
-    navigate('/schedule');
+    response && response.result && navigate('/schedule');
   };
 
   return (
