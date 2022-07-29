@@ -5,12 +5,18 @@ import styled from 'styled-components';
 interface TimeBlockProps {
   startTime: string;
   endTime: string;
+  id: number;
+  onClickDelete?: (id: number) => void;
 }
 
-const TimeBlock = ({ startTime, endTime }: TimeBlockProps) => {
+const TimeBlock = ({
+  startTime,
+  endTime,
+  id,
+  onClickDelete = (id: number) => {},
+}: TimeBlockProps) => {
   const handleClickedDeleteButton = () => {
-    // API 삭제 요청
-    // 타임 배열에서 삭제
+    onClickDelete(id);
   };
 
   return (
@@ -33,6 +39,8 @@ const Wrapper = styled.div`
   padding: 8px 4px;
   border-radius: 8px;
   color: ${({ theme }) => theme.color.font.darkgray};
+  margin-bottom: 20px;
+  max-width: 112px;
 `;
 
 const TopWrapper = styled.div`
