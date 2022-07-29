@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 import useScheduleModel from '@/api/models/useScheduleModel';
-import days from '@/utils/weekDays';
+import { Days, DaysType } from '@/types/enum';
 
 const buttonBorder = `1px solid ${theme.color.border.lightgray}`;
 const fontColor = `${theme.color.font.lightgray}`;
@@ -24,8 +24,8 @@ const ScheduleAddPage = () => {
   const handleClickedDaysButton = (
     event: React.MouseEvent<HTMLButtonElement>
   ) => {
-    const clickedDay = event.currentTarget.textContent as string;
-    const indexOfDays = days.indexOf(clickedDay);
+    const clickedDay = event.currentTarget.textContent as DaysType;
+    const indexOfDays = Days.indexOf(clickedDay);
     const newClickedState = isButtonsClicked;
     newClickedState[indexOfDays] = !newClickedState[indexOfDays];
     setIsButtonClicked([...newClickedState]);
@@ -52,7 +52,7 @@ const ScheduleAddPage = () => {
   const handleClickedSaveButton = async () => {
     const selectedTime = get24HourFormat(time, period);
     const selectedDays = isButtonsClicked
-      .map((isSelected, index) => isSelected && days[index])
+      .map((isSelected, index) => isSelected && Days[index])
       .filter((day) => day);
 
     let response = null;
@@ -90,7 +90,7 @@ const ScheduleAddPage = () => {
         <DaySection>
           <h3>Repeat on</h3>
           <ButtonsWrapper>
-            {days.map((day, index) => (
+            {Days.map((day, index) => (
               <Button
                 text={day}
                 key={day}

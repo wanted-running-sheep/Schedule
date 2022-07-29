@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { ScheduleWithoutDayType, ScheduleInterface } from 'request';
+
+import { Days } from '@/types/enum';
+import { theme } from '@/styles/theme';
 import Button from '@/components/Button';
 import TimeBlock from '@/components/TimeBlock';
-
-import styled from 'styled-components';
-import { theme } from '@/styles/theme';
-
-import { ScheduleWithoutDayInterface, ScheduleInterface } from 'request';
 import useScheduleModel from '@/api/models/useScheduleModel';
-import days from '@/utils/weekDays';
 import { getPrettyTime, getPrettyEndTime } from '@/utils/formatTime';
 
-interface organizedSchedulesInterface {
-  [key: string]: ScheduleWithoutDayInterface[];
+interface FormattedSchedulesInterface {
+  [key: string]: ScheduleWithoutDayType[];
 }
 
 const SchedulePage = () => {
-  const [organizedSchedules, setOrganizedSchedules] =
-    useState<organizedSchedulesInterface>({});
+  const [formattedSchedules, setFormattedSchedules] =
+    useState<FormattedSchedulesInterface>({});
   const { schedules, getScheduleData, deleteSchedule } = useScheduleModel();
   const navigate = useNavigate();
 
@@ -29,29 +28,30 @@ const SchedulePage = () => {
     getScheduleData();
   }, []);
 
-  const getOrganizedSchedules = (schedules: ScheduleInterface[]) => {
-    const organizedSchedules: organizedSchedulesInterface = {};
+  useEffect(() => {
+    setFormattedSchedules(getFormattedSchedules(schedules));
+  }, [schedules]);
+
+  const getFormattedSchedules = (schedules: ScheduleInterface[]) => {
+    const formattedSchedules: FormattedSchedulesInterface = {};
+
     for (let { day, ...otherData } of schedules) {
-      if (organizedSchedules.hasOwnProperty(day)) {
-        organizedSchedules[day] = [
-          ...organizedSchedules[day],
+      if (formattedSchedules.hasOwnProperty(day)) {
+        formattedSchedules[day] = [
+          ...formattedSchedules[day],
           { ...otherData },
         ];
       } else {
-        organizedSchedules[day] = [{ ...otherData }];
+        formattedSchedules[day] = [{ ...otherData }];
       }
     }
-    Object.keys(organizedSchedules).map((day) =>
-      organizedSchedules[day].sort((a, b) => a.startTime - b.startTime)
+    Object.keys(formattedSchedules).map((day) =>
+      formattedSchedules[day].sort((a, b) => a.startTime - b.startTime)
     );
-    return organizedSchedules;
+    return formattedSchedules;
   };
 
-  useEffect(() => {
-    setOrganizedSchedules(getOrganizedSchedules(schedules));
-  }, [schedules]);
-
-  const handleClickedDelete = async (id: number) => {
+  const handleDeleteClick = async (id: number) => {
     if (confirm('정말 삭제하시겠습니까?')) {
       await deleteSchedule(id);
       await getScheduleData();
@@ -72,31 +72,23 @@ const SchedulePage = () => {
         />
       </Header>
       <Article>
-        <TimeTable>
-          <Head>
-            {days.map((day, index) => (
-              <Th key={day} index={index}>
-                {day}
-              </Th>
-            ))}
-          </Head>
-          <Body>
-            {days.map((day, index) => (
-              <Td key={day} index={index}>
-                {organizedSchedules.hasOwnProperty(day) &&
-                  organizedSchedules[day].map(({ id, startTime }) => (
-                    <TimeBlock
-                      key={id}
-                      id={id}
-                      startTime={getPrettyTime(startTime)}
-                      endTime={getPrettyEndTime(startTime)}
-                      onClickDelete={handleClickedDelete}
-                    />
-                  ))}
-              </Td>
-            ))}
-          </Body>
-        </TimeTable>
+        {Days.map((day, index) => (
+          <DayTable key={index}>
+            <DayHeader>{day}</DayHeader>
+            <DayContent>
+              {formattedSchedules.hasOwnProperty(day) &&
+                formattedSchedules[day].map(({ id, startTime }) => (
+                  <TimeBlock
+                    key={id}
+                    id={id}
+                    startTime={getPrettyTime(startTime)}
+                    endTime={getPrettyEndTime(startTime)}
+                    onClickDelete={handleDeleteClick}
+                  />
+                ))}
+            </DayContent>
+          </DayTable>
+        ))}
       </Article>
     </section>
   );
@@ -110,34 +102,19 @@ const Header = styled.header`
 `;
 
 const Article = styled.article`
+  ${({ theme }) => theme.mixins.flexBox('flex-start', 'space-between')}
   background-color: ${({ theme }) => theme.color.background.white};
   padding: 30px 20px;
   margin-bottom: 20px;
 `;
-
-const TimeTable = styled.div``;
-
-const Head = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  column-gap: 20px;
-  margin-bottom: 20px;
+const DayTable = styled.div`
+  width: calc(100% / 7);
+`;
+const DayHeader = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.color.border.black};
   text-align: center;
+  margin-bottom: 20px;
 `;
-
-const Th = styled.div<{ index: number }>`
-  grid-column: ${({ index }) => index + 1};
-  grid-row: 1;
-`;
-
-const Body = styled.div`
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  column-gap: 20px;
-`;
-
-const Td = styled.div<{ index: number }>`
-  ${({ theme }) => theme.mixins.flexBox('center', 'start')}
-  flex-direction: column;
+const DayContent = styled.div`
+  margin: 0 auto;
 `;

@@ -33,23 +33,23 @@ const TimeBlock = ({
 export default TimeBlock;
 
 const Wrapper = styled.div`
-  ${({ theme }) => theme.mixins.flexBox('left', 'space-between')}
-  flex-direction: column;
   background-color: ${({ theme }) => theme.color.background.lightgray};
+  color: ${({ theme }) => theme.color.font.darkgray};
   padding: 8px 4px;
   border-radius: 8px;
-  color: ${({ theme }) => theme.color.font.darkgray};
+  margin: 0 auto;
   margin-bottom: 20px;
-  max-width: 112px;
+  max-width: 115px;
 `;
 
 const TopWrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('left', 'space-between')};
-  width: 102px;
+  width: 100%;
 `;
 
 const DeleteButton = styled.button`
   background-color: ${({ theme }) => theme.color.button.gray};
   color: ${({ theme }) => theme.color.font.white};
   border-radius: 18px;
+  margin-left: 2px;
 `;

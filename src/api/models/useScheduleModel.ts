@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { apiRequest } from '@/api/instance';
-import { ApiUrlEnum } from '@/@types/enum';
+import { ApiUrlEnum } from '@/types/enum';
 import { ScheduleInterface } from 'request';
 
 const useScheduleModel = () => {
@@ -29,7 +29,7 @@ const useScheduleModel = () => {
       const data = scheduleResponse.data;
       const msg = data.length > 0 ? '중복 일정이 있습니다.' : '';
       const result = data.length > 0 ? false : true;
-      return { msg: msg, result: result, data: data };
+      return { msg, result, data };
     } catch (error) {
       return {
         msg: '오류가 발생하였습니다. 관리자에게 문의 하세요.',
@@ -50,8 +50,8 @@ const useScheduleModel = () => {
     }
   };
 
-  const deleteSchedule = async <T>(id: number) => {
-    return await apiRequest.delete<T>(ApiUrlEnum.SCHEDULE, id);
+  const deleteSchedule = async (id: number) => {
+    return await apiRequest.delete(ApiUrlEnum.SCHEDULE, id);
   };
 
   return {
