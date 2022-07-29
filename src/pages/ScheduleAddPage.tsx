@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 import useScheduleModel from '@/api/models/useScheduleModel';
 import days from '@/utils/weekDays';
+import { MSG_DUPLICATION_SCHEDULE } from '@/constants/message';
+import { adjustHourByMinute } from '@/utils/formatTime';
 
 const buttonBorder = `1px solid ${theme.color.border.lightgray}`;
 const fontColor = `${theme.color.font.lightgray}`;
@@ -22,10 +24,7 @@ const ScheduleAddPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      getScheduleData();
-    };
-    fetchData();
+    getScheduleData();
   }, []);
 
   const handleClickedDaysButton = (
@@ -59,7 +58,11 @@ const ScheduleAddPage = () => {
   const findSameDayAndTime = (day: string, selectedTime: number) => {
     return schedules
       .filter((schedule) => schedule.day === day)
-      .find((schedule) => schedule.startTime === selectedTime);
+      .find(
+        (schedule) =>
+          selectedTime >= schedule.startTime &&
+          selectedTime < adjustHourByMinute(schedule.startTime + 40)
+      );
   };
 
   const checkDuplication = (selectedDays: string[], selectedTime: number) => {
@@ -81,7 +84,7 @@ const ScheduleAddPage = () => {
 
     if (selectedDays.length === 0) return;
     if (checkDuplication(selectedDays as string[], selectedTime)) {
-      alert('중복된 일정이 있습니다.');
+      alert(MSG_DUPLICATION_SCHEDULE);
       return;
     }
 

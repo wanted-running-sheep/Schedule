@@ -1,8 +1,12 @@
 import pad2Digit from './pad2Digit';
 import { periods } from './periods';
 
+export const adjustHourByMinute = (time: number) => {
+  return time % 100 >= 60 ? (time += 40) : time;
+};
+
 export const getPrettyTime = (time: number) => {
-  if (time % 100 >= 60) time += 40;
+  time = adjustHourByMinute(time);
   const isNight = time >= 1200 ? true : false;
   if (time >= 1300) time -= 12 * 100;
 
