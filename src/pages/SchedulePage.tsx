@@ -106,13 +106,13 @@ export default SchedulePage;
 
 const Header = styled.header`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
-  font-size: 2rem;
+  font-size: 32px;
   margin-bottom: 15px;
 `;
 
 const Article = styled.article`
   background-color: ${({ theme }) => theme.color.background.white};
-  padding: 2.5rem 2rem;
+  padding: 40px 32px;
   min-height: 50%;
   ${({ theme }) => theme.mixins.boxShadow};
 `;
@@ -139,7 +139,7 @@ const Body = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  line-height: 1.4rem;
+  line-height: 20px;
 `;
 
 const Td = styled.div<{ index: number }>`
