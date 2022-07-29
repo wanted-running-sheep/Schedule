@@ -18,7 +18,7 @@ const ScheduleAddPage = () => {
   );
   const [period, setPeriod] = useState<string>('AM');
   const [time, setTime] = useState<number>(100);
-  const { createtSchedule, checkSavedScheduleData } = useScheduleModel();
+  const { createSchedule, checkSavedScheduleData } = useScheduleModel();
   const navigate = useNavigate();
 
   const handleClickedDaysButton = (
@@ -65,7 +65,7 @@ const ScheduleAddPage = () => {
       };
       schedules.push(schedule);
     }
-    response = await createtSchedule(schedules);
+    response = await createSchedule(schedules);
     response && alert(response.msg);
     response && response.result && navigate('/schedule');
   };

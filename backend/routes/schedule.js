@@ -14,13 +14,13 @@ const scheduleRoute = [
     method: 'post',
     route: ENDPOINT,
     handler: ({ body }, res) => {
-      const shchedules = getSchedules().schedule;
-      let maxId = Math.max(...shchedules.map((schedule) => schedule.id));
+      const { schedule: schedules } = getSchedules();
+      let maxId = Math.max(...schedules.map((schedule) => schedule.id));
       const addIdSchedules = body.map((schedule) => ({
         ...schedule,
         id: ++maxId,
       }));
-      const data = [...shchedules, ...addIdSchedules];
+      const data = [...schedules, ...addIdSchedules];
 
       setSchedules({ schedule: data });
       res.send(data);
@@ -30,8 +30,8 @@ const scheduleRoute = [
     method: 'delete',
     route: `${ENDPOINT}/:id`,
     handler: ({ params: { id } }, res) => {
-      const shchedules = getSchedules().schedule;
-      const deleteSchedules = shchedules.filter(
+      const { schedule: schedules } = getSchedules();
+      const deleteSchedules = schedules.filter(
         (schedule) => Number(id) !== schedule.id
       );
       setSchedules({ schedule: deleteSchedules });
