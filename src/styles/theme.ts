@@ -1,4 +1,6 @@
 import button from './button';
+import input from './input';
+import label from './label';
 import mixins from './mixins';
 
 const color = {
@@ -28,5 +30,7 @@ export const theme = {
   color,
   mixins,
   button,
+  input,
+  label,
 };
 export type Theme = typeof theme;

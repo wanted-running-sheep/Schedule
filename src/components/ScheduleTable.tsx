@@ -1,20 +1,12 @@
+import { DaysEnum, DaysType } from '@/@types/enum';
 import React from 'react';
 import styled from 'styled-components';
 import ScheduleTableColumn from './ScheduleTableColumn';
 
 const ScheduleTable = () => {
-  const days: string[] = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
-  ];
   return (
     <Wrapper>
-      {days.map((day, index) => (
+      {Object.values(DaysEnum).map((day: DaysType, index) => (
         <ScheduleTableColumn key={index} day={day} />
       ))}
     </Wrapper>
