@@ -9,16 +9,9 @@ interface ContentProps {
 }
 
 const Content = ({ children }: ContentProps) => {
-  const isRootPath = checkRootPath();
-
   return (
     <Wrapper>
       <ContetBox>{children}</ContetBox>
-      {!isRootPath && (
-        <ButtonWrapper>
-          <Button title={ADD_SCHEDULE_TITLE} />
-        </ButtonWrapper>
-      )}
     </Wrapper>
   );
 };
@@ -36,12 +29,5 @@ const ContetBox = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.color.white};
-  ${({ theme }) => theme.mixins.boxShadow()}
-  padding: 20px 40px;
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-  margin-top: 20px;
+  ${({ theme }) => theme.mixins.boxShadow()}/* padding: 20px 40px; */
 `;

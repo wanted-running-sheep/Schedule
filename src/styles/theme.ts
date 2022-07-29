@@ -1,12 +1,13 @@
 import mixins from './mixins';
 import media from './media';
-
+import animation from './animation';
 const color = {
   white: '#ffffff',
   background: {
     turquoise: '#44a7cb',
     lightgray: '#f4f4f4',
     gray: '#EFEFEF',
+    darkgray: '#959595',
   },
 
   font: {
@@ -28,5 +29,6 @@ export const theme = {
   color,
   media,
   mixins,
+  animation,
 };
 export type Theme = typeof theme;

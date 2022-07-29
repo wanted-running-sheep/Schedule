@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 interface ButtonProps {
   title: ButtonTitleType;
+  onClick?: () => void;
 }
 
-const Button = ({ title }: ButtonProps) => {
-  return <StyledButton>{title}</StyledButton>;
+const Button = ({ title, onClick }: ButtonProps) => {
+  return <StyledButton onClick={onClick}>{title}</StyledButton>;
 };
 
 export default Button;

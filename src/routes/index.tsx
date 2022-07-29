@@ -1,7 +1,8 @@
-import BaseLayout from '@/components/Layout/BaseLayout';
-import AddSchedule from '@/pages/AddSchedule';
-import Scedule from '@/pages/Scedule';
 import React from 'react';
+import BaseLayout from '@/components/Layout/BaseLayout';
+import { TimeContextProvider } from '@/context/TimeContext';
+import AddSchedule from '@/pages/AddSchedule';
+import Scedule from '@/pages/Schedule';
 import { Route, Routes } from 'react-router-dom';
 
 const Router = () => {
@@ -11,7 +12,14 @@ const Router = () => {
         <Route path="/" element={<Scedule />} />
       </Route>
       <Route element={<BaseLayout />}>
-        <Route path="/add" element={<AddSchedule />} />
+        <Route
+          path="/add"
+          element={
+            <TimeContextProvider>
+              <AddSchedule />
+            </TimeContextProvider>
+          }
+        />
       </Route>
     </Routes>
   );
