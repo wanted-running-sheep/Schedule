@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import '@/assets/css/font.css';
 
 const GlobalStyles = createGlobalStyle`
  ${reset}
@@ -8,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
    box-sizing:border-box;
    outline:none;
    border:none;
-   font-family: 'GothicA1-Light', sans-serif;
  }
  #root, html, body {
    height: 100%;
@@ -23,9 +21,6 @@ const GlobalStyles = createGlobalStyle`
  }
  button{
   font-size: 18px;
- }
- ul{
-  list-style: none;
  }
  a {
   text-decoration: none;

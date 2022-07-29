@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AxiosResponse } from 'axios';
 import { apiRequest } from '@/api/instance';
-import { ApiUrlEnum } from '@/@types/enum';
+import { ApiUrlEnum } from '@/types/enum';
 import { ScheduleInterface } from 'request';
 
 const useScheduleModel = () => {
@@ -32,8 +32,8 @@ const useScheduleModel = () => {
     }
   };
 
-  const deleteSchedule = async <T>(id: number) => {
-    return await apiRequest.delete<T>(ApiUrlEnum.SCHEDULE, id);
+  const deleteSchedule = async (id: number) => {
+    return await apiRequest.delete(ApiUrlEnum.SCHEDULE, id);
   };
 
   return {

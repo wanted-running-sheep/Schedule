@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { INITIAL_INDEX } from '@/constants';
-import { PeriodsType, periods } from '@/utils/periods';
+import { Periods, PeriodsType } from '@/types/enum';
 
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ interface AMPMRadioProps {
 
 const AMPMRadio = ({ getChecked = (value: string) => {} }: AMPMRadioProps) => {
   const [selectedPeriod, setSelectedPeriod] = useState<PeriodsType>(
-    periods[INITIAL_INDEX]
+    Periods[INITIAL_INDEX]
   );
 
   const handleChangedRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,7 @@ const AMPMRadio = ({ getChecked = (value: string) => {} }: AMPMRadioProps) => {
 
   return (
     <Wrapper>
-      {periods.map((period) => (
+      {Periods.map((period) => (
         <div key={period}>
           <RadioButton
             id={period}

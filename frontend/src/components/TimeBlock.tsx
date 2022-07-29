@@ -32,14 +32,13 @@ const TimeBlock = ({
 export default TimeBlock;
 
 const Wrapper = styled.div`
-  ${({ theme }) => theme.mixins.flexBox('left', 'space-between')}
-  flex-direction: column;
   background-color: ${({ theme }) => theme.color.background.lightgray};
-  padding: 12px 18px;
+  padding: 12px 15px;
+  width: 150px;
   border-radius: 10px;
   color: ${({ theme }) => theme.color.font.darkgray};
+  margin: 0 auto;
   margin-bottom: 20px;
-  line-height: 18px;
   &:hover {
     ${({ theme }) => theme.mixins.boxShadow};
   }

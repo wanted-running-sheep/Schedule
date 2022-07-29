@@ -1,4 +1,4 @@
-import { ApiUrlType } from '@/@types/enum';
+import { ApiUrlType } from '@/types/enum';
 import { AxiosInstance } from 'axios';
 
 export class HttpRequest {
@@ -20,7 +20,7 @@ export class HttpRequest {
     return this.service.patch(`${url}/${id}`, data);
   }
 
-  delete<T>(url: ApiUrlType, id: number) {
+  delete(url: ApiUrlType, id: number) {
     return this.service.delete(`${url}/${id}`);
   }
 }

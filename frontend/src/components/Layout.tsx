@@ -1,12 +1,13 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 const Layout = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <Header>
+      <Header onClick={() => navigate('/schedule')}>
         <Logo src="https://cdn.imweb.me/thumbnail/20220331/90c7047dc4d68.png"></Logo>
       </Header>
       <Main>
@@ -33,6 +34,6 @@ const Logo = styled.img`
 
 const Main = styled.main`
   background-color: ${({ theme }) => theme.color.background.gray};
-  height: calc(100% - 60px);
+  /* height: calc(100% - 60px); */
   padding: 40px 25px 0 25px;
 `;
