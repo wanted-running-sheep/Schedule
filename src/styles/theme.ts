@@ -12,6 +12,7 @@ const color = {
 
   font: {
     white: '#FFFFFF',
+    lightgray: '#EAEAEA',
     darkgray: '#747474',
     black: '#000000',
   },

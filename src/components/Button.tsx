@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from '@/styles/theme';
 
 interface ButtonProps {
@@ -14,6 +14,8 @@ interface ButtonProps {
   borderColor?: string;
   border?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  isClicked?: boolean;
+  isDayButtonClicked?: boolean;
 }
 
 const Button = ({
@@ -25,6 +27,8 @@ const Button = ({
   borderRadius = '',
   borderColor = theme.color.border.white,
   border = '',
+  isClicked = false,
+  isDayButtonClicked = false,
   ...otherProps
 }: ButtonProps) => {
   return (
@@ -38,6 +42,8 @@ const Button = ({
         borderRadius={borderRadius}
         borderColor={borderColor}
         border={border}
+        isClicked={isClicked}
+        isDayButtonClicked={isDayButtonClicked}
       >
         {text}
       </StyledButton>
@@ -55,6 +61,8 @@ const StyledButton = styled.button<{
   borderRadius: string;
   borderColor: string;
   border: string;
+  isClicked: boolean;
+  isDayButtonClicked: boolean;
 }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ fontColor }) => fontColor};
@@ -63,4 +71,10 @@ const StyledButton = styled.button<{
   border-radius: ${({ borderRadius }) => borderRadius};
   border-color: ${({ borderColor }) => borderColor};
   border: ${({ border }) => border};
+  ${({ theme, isDayButtonClicked }) =>
+    isDayButtonClicked &&
+    css`
+      color: ${theme.color.font.black};
+      border-color: ${theme.color.border.darkgray};
+    `};
 `;

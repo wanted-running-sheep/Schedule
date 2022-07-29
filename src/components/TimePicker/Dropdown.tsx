@@ -98,7 +98,8 @@ const Ul = styled.ul<{ isVisible: boolean }>`
 const Li = styled.li`
   background-color: ${({ theme }) => theme.color.button.white};
   padding: 6px 12px;
-  border-top: 1px solid ${({ theme }) => theme.color.border.lightgray};
+  border: 1px solid ${({ theme }) => theme.color.border.lightgray};
+  border-top: none;
 
   &:hover {
     background-color: ${({ theme }) => theme.color.background.lightgray};
