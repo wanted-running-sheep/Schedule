@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 interface TimeBlockProps {
@@ -36,11 +35,11 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('left', 'space-between')}
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.background.lightgray};
-  padding: 0.8rem 1.1rem;
-  border-radius: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
   color: ${({ theme }) => theme.color.font.darkgray};
-  margin-bottom: 1.2rem;
-  line-height: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 18px;
   &:hover {
     ${({ theme }) => theme.mixins.boxShadow};
   }
@@ -54,7 +53,10 @@ const TopWrapper = styled.div`
 const DeleteButton = styled.button`
   background-color: ${({ theme }) => theme.color.button.gray};
   color: ${({ theme }) => theme.color.font.white};
-  border-radius: 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  width: 22px;
+  height: 22px;
   &:active {
     background-color: ${({ theme }) => theme.color.background.darkgray};
   }

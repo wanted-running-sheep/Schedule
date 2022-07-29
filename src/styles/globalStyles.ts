@@ -13,22 +13,16 @@ const GlobalStyles = createGlobalStyle`
  #root, html, body {
    height: 100%;
  }
- html{
-  font-size: 10px;
- }
- body{
-  font-size: 1.5rem;
- }
  h1{
-  font-size: 2.5rem;
+  font-size: 40px;
   font-weight: 700;
  }
  h3{
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: 500;
  }
  button{
-  font-size: 1.5rem;
+  font-size: 18px;
  }
  ul{
   list-style: none;
