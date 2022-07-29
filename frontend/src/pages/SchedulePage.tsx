@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@/components/Button';
+import Button from '@/components/@common/Button';
 import TimeBlock from '@/components/TimeBlock';
 
 import styled from 'styled-components';
@@ -106,21 +106,24 @@ export default SchedulePage;
 
 const Header = styled.header`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
-  margin-bottom: 1rem;
+  font-size: 32px;
+  margin-bottom: 15px;
 `;
 
 const Article = styled.article`
   background-color: ${({ theme }) => theme.color.background.white};
-  padding: 30px 20px;
-  margin-bottom: 20px;
+  padding: 40px 32px;
+  min-height: 50%;
+  ${({ theme }) => theme.mixins.boxShadow};
 `;
 
-const TimeTable = styled.div``;
+const TimeTable = styled.div`
+  width: 100%;
+`;
 
 const Head = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  column-gap: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.color.border.black};
   text-align: center;
@@ -129,15 +132,18 @@ const Head = styled.div`
 const Th = styled.div<{ index: number }>`
   grid-column: ${({ index }) => index + 1};
   grid-row: 1;
+  font-weight: 500;
 `;
 
 const Body = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  column-gap: 20px;
+  line-height: 20px;
 `;
 
 const Td = styled.div<{ index: number }>`
   ${({ theme }) => theme.mixins.flexBox('center', 'start')}
   flex-direction: column;
+  gap: 10px;
 `;

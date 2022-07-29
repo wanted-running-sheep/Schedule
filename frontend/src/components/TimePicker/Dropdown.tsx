@@ -78,7 +78,8 @@ const DownArrow = styled.div`
 
 const Ul = styled.ul<{ isVisible: boolean }>`
   position: absolute;
-  list-style: none;
+  ${({ theme }) => theme.mixins.noScrollBar}
+  ${({ theme }) => theme.mixins.scrollSnap.parent}
   ${({ theme, isVisible }) => {
     const { dropDownMountedAnimation, dropDownUnMountedAnimation } =
       theme.animation.dropDownAnimation;
@@ -87,10 +88,11 @@ const Ul = styled.ul<{ isVisible: boolean }>`
           ? dropDownMountedAnimation
           : dropDownUnMountedAnimation}
         0.3s ease-in-out;
+      transform-origin: top center;
     `;
   }}
   width: 52px;
-  height: 80px;
+  height: 85px;
   overflow-y: scroll;
   transform: translate(-26px);
 `;
@@ -100,7 +102,6 @@ const Li = styled.li`
   padding: 6px 12px;
   border: 1px solid ${({ theme }) => theme.color.border.lightgray};
   border-top: none;
-
   &:hover {
     background-color: ${({ theme }) => theme.color.background.lightgray};
   }
