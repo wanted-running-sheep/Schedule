@@ -14,7 +14,6 @@ const sizes: MediaQueryProps = {
 
 type BackQuoteArgs = string[];
 
-// literals로 css 속성 받아 CSSProp값으로 리턴한다.
 const media = {
   mobile: (literals: TemplateStringsArray, ...args: BackQuoteArgs): CSSProp =>
     css`

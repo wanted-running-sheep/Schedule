@@ -4,34 +4,25 @@ import media from './media';
 const color = {
   background: {
     white: '#FFFFFF',
-    lightwhite: '#FAFAFA',
-    lightgray: '#F7F7F7',
-    lightyellow: '#f8f3e7',
-    blue: '#4458FF',
-    gray: '#E5E5E5',
-    darkgray: '#606376A6',
-    black: '#000000',
+    lightgray: '#F4F4F4',
+    gray: '#EFEFEF',
+    darkgray: '#959595',
+    skyblue: '#44A7C8',
+    blue: '#3175D8',
   },
-
   font: {
     white: '#FFFFFF',
-    lightgray: '#E4E4E4',
-    gray: '#A9A9A9',
-    darkgray: '#727272',
-    lightblack: '#5A5A5A',
+    lightgray: '#cccccc',
+    gray: '#747474',
     black: '#000000',
   },
   border: {
-    lightgray: '#E1E1E1',
-    red: '#F55859',
-    darkblue: '#4B617A',
+    lightgray: '#F0F0F0',
+    gray: '#B4B4B4',
     black: '#000000',
   },
   button: {
     lightgray: '#F5F5F5',
-    gray: '#D9D9D9',
-    black: '#4A4A4A',
-    darkbrown: '#4C4C4C',
   },
 };
 
