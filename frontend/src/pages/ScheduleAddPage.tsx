@@ -20,7 +20,7 @@ const ScheduleAddPage = () => {
   );
   const [period, setPeriod] = useState<string>('AM');
   const [time, setTime] = useState<number>(100);
-  const { createtSchedule, getScheduleData, schedules } = useScheduleModel();
+  const { createSchedule, getScheduleData, schedules } = useScheduleModel();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -89,15 +89,16 @@ const ScheduleAddPage = () => {
     }
 
     let response = null;
+    const schedules = [];
+
     for (let day of selectedDays) {
       const schedule = {
         day: day,
         startTime: selectedTime,
       };
-
-      response = await createtSchedule(schedule);
-      if (!response.result) break;
+      schedules.push(schedule);
     }
+    response = await createSchedule(schedules);
     response && alert(response.msg);
     response && response.result && navigate('/schedule');
   };

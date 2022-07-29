@@ -20,7 +20,7 @@ const useScheduleModel = () => {
     }
   };
 
-  const createtSchedule = async <T>(data: T) => {
+  const createSchedule = async <T>(data: T) => {
     try {
       await apiRequest.post<T>(ApiUrlEnum.SCHEDULE, data);
       return { result: true, msg: '성공적으로 등록 되었습니다.' };
@@ -39,7 +39,7 @@ const useScheduleModel = () => {
   return {
     schedules,
     getScheduleData,
-    createtSchedule,
+    createSchedule,
     deleteSchedule,
   };
 };
