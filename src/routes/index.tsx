@@ -1,8 +1,19 @@
 import React from 'react';
-import { Routes } from 'react-router-dom';
+import Layout from '@/components/Layout';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import MainPage from '@/components/MainPage';
+import AddPage from '@/components/AddPage';
 
 const Router = () => {
-  return <Routes></Routes>;
+  return (
+    <Routes>
+      <Route path="*" element={<Navigate replace to="/main" />} />
+      <Route element={<Layout />}>
+        <Route path="/main" element={<MainPage />}></Route>
+        <Route path="/add" element={<AddPage />}></Route>
+      </Route>
+    </Routes>
+  );
 };
 
 export default Router;

@@ -1,3 +1,18 @@
 {
-  "schedule": []
+  "schedule": [
+    {
+      "id": 1,
+      "hour": "10",
+      "minute": "00",
+      "meridiem": "AM",
+      "repeatOn": ["Monday", "Thursday"]
+    },
+    {
+      "id": 2,
+      "hour": "02",
+      "minute": "20",
+      "meridiem": "PM",
+      "repeatOn": ["Wednesday"]
+    }
+  ]
 }
