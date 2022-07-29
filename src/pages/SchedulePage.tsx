@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '@/components/@/Button';
+import Button from '@/components/@common/Button';
 import TimeBlock from '@/components/TimeBlock';
 
 import styled from 'styled-components';
@@ -107,8 +107,7 @@ export default SchedulePage;
 const Header = styled.header`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
+  margin-bottom: 15px;
 `;
 
 const Article = styled.article`
@@ -133,6 +132,7 @@ const Head = styled.div`
 const Th = styled.div<{ index: number }>`
   grid-column: ${({ index }) => index + 1};
   grid-row: 1;
+  font-weight: 500;
 `;
 
 const Body = styled.div`

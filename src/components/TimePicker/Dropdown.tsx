@@ -78,7 +78,6 @@ const DownArrow = styled.div`
 
 const Ul = styled.ul<{ isVisible: boolean }>`
   position: absolute;
-  list-style: none;
   ${({ theme }) => theme.mixins.noScrollBar}
   ${({ theme }) => theme.mixins.scrollSnap.parent}
   ${({ theme, isVisible }) => {
@@ -93,7 +92,7 @@ const Ul = styled.ul<{ isVisible: boolean }>`
     `;
   }}
   width: 52px;
-  height: 80px;
+  height: 85px;
   overflow-y: scroll;
   transform: translate(-26px);
 `;
