@@ -12,6 +12,22 @@ const mixins = {
     top:2px;
     position:relative;
   `,
+  noScrollBar: () => `
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
+  `,
+  scrollSnap: {
+    parent: () => `
+      overflow: auto;
+      scroll-snap-type: y mandatory;
+    `,
+    child: () => `
+      scroll-snap-align: start;
+    `,
+  },
 };
 
 export default mixins;
