@@ -41,9 +41,9 @@ const SchedulePage = () => {
     )} ${endMeridiem}`;
   };
 
-  const deleteSelectSchedule = (id: number) => {
-    deleteSchedule(id);
-    getSchedule();
+  const deleteSelectSchedule = async (id: number) => {
+    await deleteSchedule(id);
+    await getSchedule();
   };
 
   return (
