@@ -1,19 +1,20 @@
 import { DaysType } from '@/@types/enum';
 import React from 'react';
+import { Schedule } from 'request';
 import styled from 'styled-components';
 import ScheduleBox from './ScheduleBox';
 
 interface ScheduleTableColumnProps {
   day: DaysType;
+  schedule: Schedule;
 }
 
-const ScheduleTableColumn = ({ day }: ScheduleTableColumnProps) => {
+const ScheduleTableColumn = ({ day, schedule }: ScheduleTableColumnProps) => {
   return (
     <Wrapper>
       <Day>{day}</Day>
       <ScheduleBoxWrapper>
-        <ScheduleBox />
-        <ScheduleBox />
+        <ScheduleBox schedule={schedule} />
       </ScheduleBoxWrapper>
     </Wrapper>
   );

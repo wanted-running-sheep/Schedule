@@ -1,11 +1,19 @@
-import XButton from '@/assets/icons/XButton';
 import React from 'react';
 import styled from 'styled-components';
+import XButton from '@/assets/icons/XButton';
+import { Schedule } from 'request';
 
-const ScheduleBox = () => {
+interface ScheduleBoxProps {
+  schedule: Schedule;
+}
+
+const ScheduleBox = ({ schedule }: ScheduleBoxProps) => {
   return (
     <Wrapper>
-      <div>10:00 AM - 10:40 AM</div>
+      <div>
+        <span>10:00 AM - </span>
+        <span>10:40 AM</span>
+      </div>
       <div>
         <XButton />
       </div>
@@ -34,5 +42,8 @@ const Wrapper = styled.div`
     &:active {
       fill: ${({ theme }) => theme.color.background.darkgray};
     }
+  }
+  span {
+    display: inline-block;
   }
 `;

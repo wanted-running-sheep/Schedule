@@ -12,7 +12,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
+  <>
     <GlobalStyles />
     <RecoilRoot>
       <BrowserRouter>
@@ -21,5 +22,6 @@ root.render(
         </ThemeProvider>
       </BrowserRouter>
     </RecoilRoot>
-  </React.StrictMode>
+  </>
+  // </React.StrictMode>
 );

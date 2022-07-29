@@ -1,4 +1,4 @@
-import { hours, minutes } from '@/@types/enum';
+import { DaysEnum, DaysType, hours, minutes } from '@/@types/enum';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -34,21 +34,12 @@ const AddScheduleTable = () => {
       <Row>
         <div>Repeat On</div>
         <Days>
-          {/* [ ] checkbox map */}
-          <input type="checkbox" name="days" id="Monday" />
-          <label htmlFor="Monday">Monday</label>
-          <input type="checkbox" name="days" id="Tuesday" />
-          <label htmlFor="Tuesday">Tuesday</label>
-          <input type="checkbox" name="days" id="Wednesday" />
-          <label htmlFor="Wednesday">Wednesday</label>
-          <input type="checkbox" name="days" id="Thursday" />
-          <label htmlFor="Thursday">Thursday</label>
-          <input type="checkbox" name="days" id="Friday" />
-          <label htmlFor="Friday">Friday</label>
-          <input type="checkbox" name="days" id="Saturday" />
-          <label htmlFor="Saturday">Saturday</label>
-          <input type="checkbox" name="days" id="Sunday" />
-          <label htmlFor="Sunday">Sunday</label>
+          {Object.values(DaysEnum).map((day: DaysType, index) => (
+            <div key={index}>
+              <input type="checkbox" name="days" id={day} />
+              <label htmlFor={day}>{day}</label>
+            </div>
+          ))}
         </Days>
       </Row>
     </Wrapper>
