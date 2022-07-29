@@ -1,5 +1,8 @@
 import button from './button';
+import input from './input';
+import label from './label';
 import mixins from './mixins';
+import select from './select';
 
 const color = {
   background: {
@@ -28,5 +31,8 @@ export const theme = {
   color,
   mixins,
   button,
+  input,
+  label,
+  select,
 };
 export type Theme = typeof theme;
