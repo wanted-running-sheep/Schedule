@@ -5,10 +5,11 @@ import { ScheduleWithoutDayType, ScheduleInterface } from 'request';
 
 import { Days } from '@/types/enum';
 import { theme } from '@/styles/theme';
-import Button from '@/components/Button';
-import TimeBlock from '@/components/TimeBlock';
 import useScheduleModel from '@/api/models/useScheduleModel';
 import { getPrettyTime, getPrettyEndTime } from '@/utils/formatTime';
+
+import Button from '@/components/Button';
+import TimeBlock from '@/components/TimeBlock';
 
 interface FormattedSchedulesInterface {
   [key: string]: ScheduleWithoutDayType[];

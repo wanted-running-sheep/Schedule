@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import TimePicker from '@/components/TimePicker/TimePicker';
-import AMPMRadio from '@/components/AMPMRadio';
-import Button from '@/components/Button';
-
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+import { INITIAL_INDEX } from '@/constants';
 import { theme } from '@/styles/theme';
+import { Days, DaysType, Periods } from '@/types/enum';
 import useScheduleModel from '@/api/models/useScheduleModel';
-import { Days, DaysType } from '@/types/enum';
+
+import Button from '@/components/Button';
+import AMPMRadio from '@/components/AMPMRadio';
+import TimePicker from '@/components/TimePicker/TimePicker';
 
 const buttonBorder = `1px solid ${theme.color.border.lightgray}`;
 const fontColor = `${theme.color.font.lightgray}`;
 
 const ScheduleAddPage = () => {
+  const navigate = useNavigate();
   const [isButtonsClicked, setIsButtonClicked] = useState<boolean[]>(
     new Array(7).fill(false)
   );
-  const [period, setPeriod] = useState<string>('AM');
+  const [period, setPeriod] = useState<string>(Periods[INITIAL_INDEX]);
   const [time, setTime] = useState<number>(100);
   const { createtSchedule, checkSavedScheduleData } = useScheduleModel();
-  const navigate = useNavigate();
 
   const handleClickedDaysButton = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -82,12 +84,14 @@ const ScheduleAddPage = () => {
         <h1>Add class schedule</h1>
       </Header>
       <Article>
-        <TimeSection>
+        <Content>
           <h3>Start time</h3>
           <TimePicker getTime={getTime} />
-          <AMPMRadio getChecked={getPeriodChecked} />
-        </TimeSection>
-        <DaySection>
+          <RadioWrapper>
+            <AMPMRadio getChecked={getPeriodChecked} />
+          </RadioWrapper>
+        </Content>
+        <Content>
           <h3>Repeat on</h3>
           <ButtonsWrapper>
             {Days.map((day, index) => (
@@ -102,7 +106,7 @@ const ScheduleAddPage = () => {
               />
             ))}
           </ButtonsWrapper>
-        </DaySection>
+        </Content>
       </Article>
       <Footer>
         <Button
@@ -124,29 +128,26 @@ export default ScheduleAddPage;
 const Header = styled.header`
   margin-bottom: 40px;
 `;
-
 const Article = styled.article`
   background-color: ${({ theme }) => theme.color.background.white};
   padding: 30px 20px;
   margin-bottom: 20px;
 `;
+const Content = styled.div`
+  ${({ theme }) => theme.mixins.flexBox('center', 'flex-start')};
+  height: 130px;
 
-const TimeSection = styled.section`
-  ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
-  max-width: 360px;
-  margin-bottom: 100px;
+  h3 {
+    width: 120px;
+  }
 `;
-
-const DaySection = styled.section`
-  ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
-  width: 956px;
+const RadioWrapper = styled.div`
+  margin-left: 20px;
 `;
-
 const ButtonsWrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')};
   width: 860px;
 `;
-
 const Footer = styled.footer`
-  ${({ theme }) => theme.mixins.flexBox('center', 'right')};
+  text-align: right;
 `;
