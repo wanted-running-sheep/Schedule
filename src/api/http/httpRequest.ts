@@ -8,7 +8,7 @@ export class HttpRequest {
     this.service = service;
   }
 
-  get<T>(url: string) {
+  get<T>(url: ApiUrlType) {
     return this.service.get<T>(url).then((res) => res);
   }
 
