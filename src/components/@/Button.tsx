@@ -77,4 +77,10 @@ const StyledButton = styled.button<{
       color: ${theme.color.font.black};
       border-color: ${theme.color.border.darkgray};
     `};
+  &:hover {
+    ${({ theme }) => theme.mixins.boxShadow}
+  }
+  &:active {
+    ${({ theme }) => theme.mixins.boxShadowClicked}
+  }
 `;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TimePicker from '@/components/TimePicker/TimePicker';
 import AMPMRadio from '@/components/AMPMRadio';
-import Button from '@/components/Button';
+import Button from '@/components/@/Button';
 
 import styled from 'styled-components';
 import { theme } from '@/styles/theme';

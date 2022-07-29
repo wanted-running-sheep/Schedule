@@ -6,6 +6,7 @@ const color = {
   background: {
     white: '#FFFFFF',
     lightgray: '#F4F4F4',
+    darkgray: '#747474',
     gray: '#EFEFEF',
     lightblue: '#5FA5C4',
   },
@@ -19,7 +20,7 @@ const color = {
   border: {
     white: '#FFFFFF',
     lightgray: '#EAEAEA',
-    darkgray: '#C2C2C2',
+    darkgray: '#747474',
     darkblue: '#4B617A',
     black: '#000000',
   },

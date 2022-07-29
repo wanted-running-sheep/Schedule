@@ -36,20 +36,26 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('left', 'space-between')}
   flex-direction: column;
   background-color: ${({ theme }) => theme.color.background.lightgray};
-  padding: 8px 4px;
+  padding: 0.8rem 1.1rem;
   border-radius: 8px;
   color: ${({ theme }) => theme.color.font.darkgray};
-  margin-bottom: 20px;
-  max-width: 112px;
+  margin-bottom: 1.2rem;
+  line-height: 1.1rem;
+  &:hover {
+    ${({ theme }) => theme.mixins.boxShadow};
+  }
 `;
 
 const TopWrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('left', 'space-between')};
-  width: 102px;
+  width: 120px;
 `;
 
 const DeleteButton = styled.button`
   background-color: ${({ theme }) => theme.color.button.gray};
   color: ${({ theme }) => theme.color.font.white};
   border-radius: 18px;
+  &:active {
+    background-color: ${({ theme }) => theme.color.background.darkgray};
+  }
 `;

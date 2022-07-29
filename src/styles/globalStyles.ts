@@ -10,14 +10,20 @@ const GlobalStyles = createGlobalStyle`
    border:none;
    font-family: 'GothicA1-Light', sans-serif;
  }
+ #root, html, body {
+   height: 100%;
+ }
+ html{
+  font-size: 10px;
+ }
+ body{
+  font-size: 1.5rem;
+ }
  h1{
    font-family: 'GothicA1-Black', sans-serif;
  }
  button {
   font-family: 'GothicA1-Medium', sans-serif;
- }
- #root, html, body {
-   height: 100%;
  }
  ul{
   list-style: none;
