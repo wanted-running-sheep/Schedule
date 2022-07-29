@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import TimePicker from '@/components/TimePicker/TimePicker';
 import AMPMRadio from '@/components/AMPMRadio';
@@ -18,8 +18,15 @@ const ScheduleAddPage = () => {
   );
   const [period, setPeriod] = useState<string>('AM');
   const [time, setTime] = useState<number>(100);
-  const { createtSchedule, checkSavedScheduleData } = useScheduleModel();
+  const { createtSchedule, getScheduleData, schedules } = useScheduleModel();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      getScheduleData();
+    };
+    fetchData();
+  }, []);
 
   const handleClickedDaysButton = (
     event: React.MouseEvent<HTMLButtonElement>
@@ -49,11 +56,34 @@ const ScheduleAddPage = () => {
     return time;
   };
 
+  const findSameDayAndTime = (day: string, selectedTime: number) => {
+    return schedules
+      .filter((schedule) => schedule.day === day)
+      .find((schedule) => schedule.startTime === selectedTime);
+  };
+
+  const checkDuplication = (selectedDays: string[], selectedTime: number) => {
+    let isDuplicate = false;
+    for (let day of selectedDays) {
+      if (findSameDayAndTime(day, selectedTime)) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    return isDuplicate;
+  };
+
   const handleClickedSaveButton = async () => {
     const selectedTime = get24HourFormat(time, period);
     const selectedDays = isButtonsClicked
       .map((isSelected, index) => isSelected && days[index])
       .filter((day) => day);
+
+    if (selectedDays.length === 0) return;
+    if (checkDuplication(selectedDays as string[], selectedTime)) {
+      alert('중복된 일정이 있습니다.');
+      return;
+    }
 
     let response = null;
     for (let day of selectedDays) {
@@ -61,13 +91,6 @@ const ScheduleAddPage = () => {
         day: day,
         startTime: selectedTime,
       };
-
-      response = await checkSavedScheduleData(
-        day as string,
-        selectedTime as number
-      );
-      if (!response.result) break;
-      if (response.data && response.data.length > 0) break;
 
       response = await createtSchedule(schedule);
       if (!response.result) break;
