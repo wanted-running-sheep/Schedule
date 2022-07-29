@@ -7,16 +7,8 @@ import Button from '@/components/Button';
 import styled from 'styled-components';
 import { theme } from '@/styles/theme';
 import useScheduleModel from '@/api/models/useScheduleModel';
+import days from '@/utils/weekDays';
 
-const days = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-];
 const buttonBorder = `1px solid ${theme.color.border.lightgray}`;
 const fontColor = `${theme.color.font.lightgray}`;
 
@@ -47,9 +39,17 @@ const ScheduleAddPage = () => {
     setTime(Number(value));
   };
 
+  const get24HourFormat = (time: number, period: string) => {
+    const helpNumber = 12 * 100;
+    const hour = Math.floor(time / 100);
+
+    if (period === 'PM' && hour === 12) return time;
+    if (period === 'PM') return time + helpNumber;
+    if (hour === 12) return time - helpNumber;
+  };
+
   const handleClickedSaveButton = async () => {
-    let selectedTime = time;
-    if (period === 'PM') selectedTime += 12 * 100;
+    const selectedTime = get24HourFormat(time, period);
     const selectedDays = isButtonsClicked
       .map((isSelected, index) => isSelected && days[index])
       .filter((day) => day);

@@ -1,7 +1,9 @@
 declare module 'request' {
-  interface ScheduleInterface {
+  interface ScheduleWithoutDayInterface {
     id: number;
-    day: string;
     startTime: number;
+  }
+  interface ScheduleInterface extends ScheduleWithoutDayInterface {
+    day: string;
   }
 }
