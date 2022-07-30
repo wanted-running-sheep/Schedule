@@ -98,10 +98,12 @@ const ScheduleAddPage = () => {
       <Article>
         <Content>
           <h3>Start time</h3>
-          <TimePicker getTime={getTime} />
-          <RadioWrapper>
-            <AMPMRadio selectedTime={time} />
-          </RadioWrapper>
+          <StartTimeWrapper>
+            <TimePicker getTime={getTime} />
+            <RadioWrapper>
+              <AMPMRadio selectedTime={time} />
+            </RadioWrapper>
+          </StartTimeWrapper>
         </Content>
         <Content>
           <h3>Repeat on</h3>
@@ -139,6 +141,12 @@ export default ScheduleAddPage;
 
 const Header = styled.header`
   margin-bottom: 40px;
+
+  ${({ theme }) => theme.media.mobile`
+    h1 {
+      font-size: 20px;
+    }
+  `}
 `;
 const Article = styled.article`
   background-color: ${({ theme }) => theme.color.background.white};
@@ -150,18 +158,39 @@ const Article = styled.article`
 `;
 const Content = styled.div`
   ${({ theme }) => theme.mixins.flexBox('center', 'flex-start')};
-  height: 130px;
 
   h3 {
-    width: 160px;
+    width: 140px;
+    font-size: 1rem;
+    margin: 50px 0px;
   }
+
+  ${({ theme }) => theme.media.tablet`
+    display: block;
+
+    h3 {
+      margin: 0px;
+      margin-bottom: 20px;
+    }
+  `}
+`;
+const StartTimeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  ${({ theme }) => theme.media.tablet`
+  
+  margin-bottom: 30px;
+  `}
 `;
 const RadioWrapper = styled.div`
   margin-left: 20px;
 `;
 const ButtonsWrapper = styled.div`
-  ${({ theme }) => theme.mixins.flexBox('center', 'space-between')};
-  width: 860px;
+  width: 100%;
+  button {
+    margin-top: 5px;
+    margin-right: 10px;
+  }
 `;
 const Footer = styled.footer`
   text-align: right;

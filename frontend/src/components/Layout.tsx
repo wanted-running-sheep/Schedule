@@ -36,4 +36,5 @@ const Main = styled.main`
   background-color: ${({ theme }) => theme.color.background.gray};
   height: calc(100% - 60px);
   padding: 40px 25px 0 25px;
+  overflow-y: auto;
 `;
