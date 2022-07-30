@@ -101,17 +101,29 @@ const Header = styled.header`
   ${({ theme }) => theme.mixins.flexBox('center', 'space-between')}
   font-size: 32px;
   margin-bottom: 15px;
+
+  ${({ theme }) => theme.media.mobile`
+    h1 {
+      font-size: 20px;
+    }
+  `}
 `;
 
 const Article = styled.article`
+  ${({ theme }) => theme.mixins.boxShadow};
   ${({ theme }) => theme.mixins.flexBox('flex-start', 'space-between')}
   background-color: ${({ theme }) => theme.color.background.white};
   padding: 40px 32px;
   min-height: 600px;
-  ${({ theme }) => theme.mixins.boxShadow};
+  ${({ theme }) => theme.media.tablet`
+    display: block;
+  `}
 `;
 const DayTable = styled.div`
   width: calc(100% / 7);
+  ${({ theme }) => theme.media.tablet`
+    width: 100%;
+  `}
 `;
 const DayHeader = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.color.border.black};

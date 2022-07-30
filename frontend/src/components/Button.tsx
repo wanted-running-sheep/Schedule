@@ -83,4 +83,8 @@ const StyledButton = styled.button<{
   &:active {
     ${({ theme }) => theme.mixins.boxShadowClicked}
   }
+
+  ${({ theme }) => theme.media.tablet`
+    font-size: 0.8rem;
+  `}
 `;

@@ -33,20 +33,28 @@ export default TimeBlock;
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.color.background.lightgray};
-  padding: 12px 15px;
-  width: 150px;
-  border-radius: 10px;
   color: ${({ theme }) => theme.color.font.darkgray};
+  padding: 12px 5px;
+  width: 95%;
+  max-width: 150px;
+  border-radius: 10px;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   &:hover {
     ${({ theme }) => theme.mixins.boxShadow};
   }
+  ${({ theme }) => theme.media.tablet`
+    max-width: none;
+
+    span {
+      font-size: 1rem;
+    }
+  `}
 `;
 
 const TopWrapper = styled.div`
   ${({ theme }) => theme.mixins.flexBox('left', 'space-between')};
-  width: 120px;
+  width: 100%;
 `;
 
 const DeleteButton = styled.button`
