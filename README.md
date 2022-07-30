@@ -51,67 +51,54 @@
 ## 3. 프로젝트 구조
 
 ```
-📁 server
-├── database
-│   ├── db.json
-│   └── region.json
-├── index.js
-└── writeDB.js
-📁 src
-├── @types
-├── api
-│   ├── http
-│   ├── instance
-│   └── models
-├── assets/icons
-├── components
-│   ├── RegionModal
-│   │   ├── RegionContentBox
-│   │   └── TouchScroll
-│   ├── UserList
-│   │   ├── Pagination
-│   │   ├── Tab
-│   │   ├── Table
-│   │   └── Tooltip
-│   ├── AdminLayout
-│   ├── Checkbox
-│   ├── Content
-│   ├── Input
-│   ├── Label
-│   ├── Loading
-│   ├── Login
-│   ├── MobileLayout
-│   ├── Radio
-│   ├── RoundButton
-│   ├── SearchBar
-│   ├── SelectBox
-│   ├── Title
-│   └── TransportationList
-├── constants
-│   ├── error
-│   └── validation
-├── hooks
-│   ├── usePagination
-│   ├── useSeearchUser
-│   └── useToggleButton
-├── pages
-│   ├── AdminLoginPage
-│   ├── AdminPage
-│   ├── AgreementPage
-│   ├── ApplyPage
-│   └── LandingPage
-├── routes
-├── styles
-│   ├── globalStyles
-│   ├── media
-│   ├── mixins
-│   └── theme
-├── utils
-│   ├── excelDownload
-│   └── formatString
-│
+📁frontend
+├── 📁 src
+├──────── api
+│   │    ├── http
+│   │    ├── instance
+│   │    └── models
+├──────── assets/css
+├──────── @components
+│   │     ├── @common
+│   │     │   ├── Button
+│   │     ├── TimePicker
+│   │     ├── AMPMRadio
+│   │     ├── Button
+│   │     ├── Layout
+│   │     ├── TimneBlock
+│──────── constants
+│   │     ├── index
+│   │     ├── message
+├──────── pages
+│   │     ├── ScheduleAddPage
+│   │     ├── SchedulePage
+│   │     ├── index
+├──────── routes
+│   │     ├── index
+├──────── styles
+│   │     ├── animation
+│   │     ├── globalStyles
+│   │     ├── media
+│   │     ├── mixins
+│   │     ├── theme
+├──────── types
+│   │     ├── api
+│   │     ├── enum
+│   │     ├── style
+├──────── utils
+│   │     ├── formatTime
+│   │     ├── pad2Digit
+│   │     ├── periods
+│   │     ├── weekDays
 ├── App.tsx
 └── index.tsx
+📁 backend
+├──────── database
+│         ├── db.json
+│         └── dbController.js
+├──────── routes
+│         ├── schedule
+├── index.js
 ```
 
 <br />
