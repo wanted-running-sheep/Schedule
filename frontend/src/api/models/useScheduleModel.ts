@@ -3,6 +3,10 @@ import { AxiosResponse } from 'axios';
 import { apiRequest } from '@/api/instance';
 import { ApiUrlEnum } from '@/types/enum';
 import { ScheduleInterface } from 'request';
+import {
+  MSG_REGISTRATION_SUCCESSFUL,
+  MSG_REQUEST_FAILED,
+} from '@/constants/message';
 
 const useScheduleModel = () => {
   const [schedules, setSchedules] = useState<ScheduleInterface[]>([]);
@@ -23,11 +27,11 @@ const useScheduleModel = () => {
   const createSchedule = async <T>(data: T) => {
     try {
       await apiRequest.post<T>(ApiUrlEnum.SCHEDULE, data);
-      return { result: true, msg: '성공적으로 등록 되었습니다.' };
+      return { result: true, msg: MSG_REGISTRATION_SUCCESSFUL };
     } catch (error) {
       return {
         result: false,
-        msg: '오류가 발생하였습니다. 관리자에게 문의 하세요.',
+        msg: MSG_REQUEST_FAILED,
       };
     }
   };
