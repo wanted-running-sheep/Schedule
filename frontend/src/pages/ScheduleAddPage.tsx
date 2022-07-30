@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-import { INITIAL_INDEX } from '@/constants';
 import { theme } from '@/styles/theme';
 import { Days, DaysType, Periods } from '@/types/enum';
 import useScheduleModel from '@/api/models/useScheduleModel';

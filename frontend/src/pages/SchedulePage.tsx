@@ -5,6 +5,7 @@ import { ScheduleWithoutDayType, ScheduleInterface } from 'request';
 
 import { Days } from '@/types/enum';
 import { theme } from '@/styles/theme';
+import { MSG_DELETE_SCHEDULE } from '@/constants/message';
 import useScheduleModel from '@/api/models/useScheduleModel';
 import { getPrettyTime, getPrettyEndTime } from '@/utils/formatTime';
 
@@ -53,7 +54,7 @@ const SchedulePage = () => {
   };
 
   const handleDeleteClick = async (id: number) => {
-    if (confirm('정말 삭제하시겠습니까?')) {
+    if (confirm(MSG_DELETE_SCHEDULE)) {
       await deleteSchedule(id);
       await getScheduleData();
     }
